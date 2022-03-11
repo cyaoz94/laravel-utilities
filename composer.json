@@ -1,0 +1,55 @@
+{
+    "name": "cyaoz94/laravel-utilities",
+    "description": "This is a package for easily setting up laravel backend services.",
+    "keywords": [
+        "cyaoz94",
+        "laravel-utilities"
+    ],
+    "homepage": "https://github.com/cyaoz94/laravel-utilities",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Casper Ho",
+            "email": "casperyaoz@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0",
+        "spatie/laravel-permission": "^5.1"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cyaoz94\\LaravelUtilities\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cyaoz94\\LaravelUtilities\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cyaoz94\\LaravelUtilities\\LaravelUtilitiesServiceProvider"
+            ],
+            "aliases": {
+                "LaravelUtilities": "Cyaoz94\\LaravelUtilities\\LaravelUtilitiesFacade"
+            }
+        }
+    }
+}
