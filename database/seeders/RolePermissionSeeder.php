@@ -23,23 +23,23 @@ class RolePermissionSeeder extends Seeder
         $guardName = 'admin';
 
         $permissions = [
-            'admin-user.create',
-            'admin-user.read',
-            'admin-user.update',
-            'admin-user.delete',
-            'user.create',
-            'user.read',
-            'user.update',
-            'user.delete',
-            'role.create',
-            'role.read',
-            'role.update',
-            'role.delete',
+            // your permissions here.
+            // 'admin-user.create',
+            // 'admin-user.read',
+            // 'admin-user.update',
+            // 'admin-user.delete',
+            // 'role.create',
+            // 'role.read',
+            // 'role.update',
+            // 'role.delete',
         ];
 
         foreach ($permissions as $permission) {
             Permission::findOrCreate($permission, $guardName);
         }
+
+        // remove permissions not defined in $permissions
+        Permission::whereNotIn('name', $permissions)->where('guard_name', $guardName)->delete();
 
         $superAdminRole = Role::findOrCreate('Super Admin', $guardName);
         $superAdminRole->givePermissionTo(Permission::all());
