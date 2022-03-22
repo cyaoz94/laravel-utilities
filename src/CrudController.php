@@ -42,7 +42,7 @@ class CrudController extends Controller
         $perPage = $request->has('per_page') ? intval($request->input('per_page')) : 10;
         $items = $query->paginate($perPage);
 
-        return $this->commonOffsetPaginationJsonResponse($items);
+        return $this->commonOffsetPaginationJsonResponse($items, $this->resourceClass);
     }
 
     /**
