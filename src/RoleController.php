@@ -22,7 +22,7 @@ class RoleController extends CrudController
 
     public function show($id)
     {
-        $role = Role::where('id', $id)->with('permissions')->first();
+        $role = Role::where('id', $id)->with('permissions')->firstOrFail();
 
         return $this->commonJsonResponse(new RoleWithPermissionResource($role));
     }

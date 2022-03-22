@@ -16,3 +16,6 @@ All notable changes to `laravel-utilities` will be documented in this file
 
 ## 1.3 - 2022-03-22
 - Fix CrudController's index method whereby responses are not formatted by the provided `$resourceClass`
+
+## 1.3.1 - 2022-03-22
+- Fix RoleController's show API whereby ModelNotFoundException when requesting for a non-existing resource.
