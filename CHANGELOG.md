@@ -19,3 +19,6 @@ All notable changes to `laravel-utilities` will be documented in this file
 
 ## 1.3.1 - 2022-03-22
 - Fix RoleController's show API whereby ModelNotFoundException when requesting for a non-existing resource.
+
+## 1.4 - 2022-03-31
+- Update QueryFilter class' snakeToCamelCase into a protected function instead of private.

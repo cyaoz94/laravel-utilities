@@ -22,7 +22,7 @@ class QueryFilter
      * @param $input
      * @return string
      */
-    private function snakeToCamelCase($input)
+    protected function snakeToCamelCase($input)
     {
         return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $input))));
     }
