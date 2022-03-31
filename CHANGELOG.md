@@ -22,3 +22,6 @@ All notable changes to `laravel-utilities` will be documented in this file
 
 ## 1.4 - 2022-03-31
 - Update QueryFilter class' snakeToCamelCase into a protected function instead of private.
+
+## 1.4.1 - 2022-03-31
+- Fix commonOffsetPaginationJsonResponse() whereby `total` returned in response is incorrect. 

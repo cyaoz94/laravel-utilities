@@ -133,7 +133,7 @@ class CrudController extends Controller
             'message' => $message,
             'pagination' => [
                 'current_page' => $data->currentPage(),
-                'total' => $data->count(),
+                'total' => $data->total(),
                 'per_page' => $data->perPage(),
                 'last_page' => $data->lastPage(),
             ],
