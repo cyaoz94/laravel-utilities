@@ -22,9 +22,9 @@ class RoleController extends CrudController
 
     public function show($id)
     {
-        $role = Role::where('id', $id)->with('permissions')->firstOrFail();
+        $role = $this->modelClass::where('id', $id)->with('permissions')->firstOrFail();
 
-        return $this->commonJsonResponse(new RoleWithPermissionResource($role));
+        return $this->commonJsonResponse($this->resourceClass ? new $this->resourceClass($role) : $role);
     }
 
     public function store(Request $request, array $validationRules = [])
@@ -34,7 +34,7 @@ class RoleController extends CrudController
             'permissions' => 'required|array|exists:permissions,name',
         ]);
 
-        $role = Role::create(['name' => $request->name]);
+        $role = $this->modelClass::create(['name' => $request->name]);
         $role->syncPermissions($request->permissions);
 
         return $this->commonJsonResponse([], 'Created Successfully.');
@@ -47,7 +47,7 @@ class RoleController extends CrudController
             'permissions' => 'required|array|exists:permissions,name',
         ]);
 
-        $role = Role::findOrFail($id);
+        $role = $this->modelClass::findOrFail($id);
         $this->authorize('update', $role); // authorize with RolePolicy
 
         $role->name = $request->name;
@@ -60,7 +60,7 @@ class RoleController extends CrudController
 
     public function destroy($id)
     {
-        $role = Role::findOrFail($id);
+        $role = $this->modelClass::findOrFail($id);
         $this->authorize('delete', $role); // authorize with RolePolicy
         $role->delete();
 
