@@ -28,3 +28,7 @@ All notable changes to `laravel-utilities` will be documented in this file
 
 ## 1.4.2 - 2022-04-07
 - Update RoleController to allow better usage if the controller gets extended.
+
+## 1.4.3 - 2022-04-08
+- Added getUsedTraits() method in CrudController to get all traits used by class and all its parent classes and use the
+mentioned method when calling isClassFilterable() method.
