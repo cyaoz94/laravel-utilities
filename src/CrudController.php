@@ -111,9 +111,21 @@ class CrudController extends Controller
      * checks if a class uses the Filterable trait
      * @return bool
      */
-    private function isClassFilterable()
+    protected function isClassFilterable()
     {
-        return in_array(Filterable::class, class_uses($this->modelClass));
+        return in_array(Filterable::class, $this->getUsedTraits($this->modelClass));
+    }
+
+    protected function getUsedTraits($classInstance)
+    {
+        $parentClasses = class_parents($classInstance);
+        $traits = class_uses($classInstance);
+
+        foreach ($parentClasses as $parentClass) {
+            $traits = array_merge($traits, class_uses($parentClass));
+        }
+
+        return $traits;
     }
 
     protected function commonJsonResponse($data, $message = null, $code = 0)
